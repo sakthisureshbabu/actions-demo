@@ -8,16 +8,18 @@ on :
 jobs:
   # First Job
   Hello-job:
-    needs: "echo-goodbye"
+    # needs: "echo-goodbye"
      # runner - Github hosted
      runs-on : ubuntu-latest
      steps:
        - name : Hello World
          run : echo "Hello World"
+       - name : Event Name
+         run : echo "Event Name: ${{github.event}}" # Context Reference
 
   # Second Job
   echo-goodbye:
-    # needs: "Hello-job"
+    needs: "Hello-job"
     runs-on: ubuntu-slim
     steps:
       - name: Say Goodbye
