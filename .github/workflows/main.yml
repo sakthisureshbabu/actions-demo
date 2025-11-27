@@ -6,9 +6,24 @@ on :
   workflow_dispatch:
  
 jobs:
+  # First Job
   Hello-job:
      # runner - Github hosted
      runs-on : ubuntu-latest
      steps:
        - name : Hello World
          run : echo "Hello World"
+
+  # Second Job
+  echo-goodbye:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Say Goodbye
+        run: echo "Goodbye!"
+      # Multiple commands
+      - name: Multi-line bash
+        run: |
+          echo "I am"
+          echo "multi-line"
+          echo "script"
+          
